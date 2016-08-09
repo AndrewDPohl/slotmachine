@@ -1,0 +1,92 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+  background-color: #849483;
+}
+
+.title {
+  background-color: black;
+  height: 50px;
+  width: 100%;
+  margin-bottom: 50px;
+  margin-top: -15px;
+}
+
+.main-title {
+  margin-top: 15px;
+  color: white;
+  font-size: 20px;
+  font-family: Helvetica;
+  text-align: center;
+}
+
+.sub-title {
+  text-align: center;
+  color: white;
+  margin-top: -10px;
+}
+
+.slot-body {
+  height: 500px;
+  width: 1000px;
+  background-color: black;
+  margin: 0 auto;
+}
+
+.reel-container {
+  margin-left: 250px;
+  display: inline-block;
+}
+
+.reel {
+  display: inline-block;
+  margin: 140px 15px 0 15px;
+  font-size: 40px;
+  font-family: arial, helvetica, sans-serif;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  border: 2px solid white;
+}
+
+.reel-tile {
+  height: 200px;
+  width: 200px;
+  background-color: #C7F2A7;
+  text-align: center;
+  display: table; 
+}
+
+.reel-title {
+  text-align:center; 
+  vertical-align: middle;
+  display: table-cell; 
+}
+
+.reel .wrapper{
+  margin-top: -6px;
+  width: 100px;
+}
+
+.button-container {
+  float: left;
+  height: 500px;
+  position: absolute;
+  width: 300px;
+}
+
+.slot-button {
+  display: block;
+  position: absolute;
+  top: 33%;
+  left: 11%;
+  height: 150px;
+  width: 200px;
+  background-color: #B4656F;
+  font-size: 25px;
+  font-family: Helvetica;
+  cursor: pointer;
+}
