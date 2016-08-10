@@ -17,6 +17,18 @@ $(document).ready(
   }   
 );
 
+$(document).ready(function() {
+    var obj = document.createElement("audio");
+    obj.src="./slotMachineSound.mp3";
+    obj.volume=0.10;
+    obj.autoPlay=false;
+    obj.preLoad=true;       
+
+    $("button").click(function() {
+        obj.play();
+    });
+});
+
 $('button').click(function() {
   spin();
   setTimeout(function() {
@@ -28,12 +40,9 @@ $('button').click(function() {
 // which is really just adding to the margin-top of the list of divs.  It also adds more tiles
 // to the reel so that if you need to press the button again, there are already new tiles available
 function spin() {
+  checkWinArray = [];
   strobe("#status");
   $("#status").html("Spinning...");
-  $("#coffee").css("display", "none");
-  $("#tea").css("display", "none");
-  $("#espresso").css("display", "none");
-  checkWinArray = [];
   addTiles($("#reel1 .wrapper"), machines);
   moveTiles($("#reel1 .wrapper"));
   addTiles($("#reel2 .wrapper"), tools);
@@ -59,7 +68,7 @@ function addTiles(target, array) {
 }; 
 
 // This creates an animation effect.  
-function moveTiles(target, fun) {
+function moveTiles(target) {
   var time = 6500;
   time += Math.round(Math.random() * 1000);
   target.stop(true, true);
@@ -78,14 +87,17 @@ function checkWin(arr) {
     strobe(".wrapper")
     $("#status").html("Congrats! You win some tea!");
     $('#tea').css("display", "block");
+    $("#tea").fadeOut(7000, "swing");
   } else if (arr[0] === 'Coffee Maker' && arr[1] === 'Coffee Filter' && arr[2] === 'Coffee Beans') {
     strobe(".wrapper")
     $("#status").html("Congrats!  You win some coffee!");
     $('#coffee').css("display", "block");
+    $("#coffee").fadeOut(7000, "swing");
   } else if (arr[0] === 'Espresso Machine' && arr[1] === 'Espresso Tamper' && arr[2] === 'Ground Espresso Beans') {
     strobe(".wrapper")
     $("#status").html("Congrats!! You win some Espresso!!");
     $('#espresso').css("display", "block");
+    $("#espresso").fadeOut(7000, "swing");
   } else {
     $("#status").html("Oops! Not a winner this time!  Try Again");
   }
