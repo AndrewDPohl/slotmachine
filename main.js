@@ -3,6 +3,12 @@ var machines = ['Coffee Maker', 'Teapot', 'Espresso Machine'];
 var tools = ['Coffee Filter', 'Tea Strainer', 'Espresso Tamper'];
 var organics = ['Coffee Beans', 'Loose Tea', 'Ground Espresso Beans'];
 
+// Various sounds to be played during the game
+var reelsTurn = "./audio/slotMachineSound.mp3";
+var bellChime = "./audio/bellChime.mp3";
+var gameStart = "./audio/gameStart.ogg";
+
+// Array that is used to check if a winner
 checkWinArray = [];
 
 // When the page loads, this function will create the first set of reels, 
@@ -11,29 +17,31 @@ $(document).ready(
   function(){
     strobe("#status");
     $("#status").text("Press The Start Button To Win!");
+    playSounds(gameStart);
     addTiles($("#reel1 .wrapper"), machines);
     addTiles($("#reel2 .wrapper"), tools);
     addTiles($("#reel3 .wrapper"), organics);
   }   
 );
 
-$(document).ready(function() {
-    var obj = document.createElement("audio");
-    obj.src="./slotMachineSound.mp3";
-    obj.volume=0.10;
-    obj.autoPlay=false;
-    obj.preLoad=true;       
+// This function takes in a sound, passing it in as the src, and plays the sound when called
+function playSounds(sound) {
+  var obj = document.createElement("audio");
+  obj.src = sound;
+  obj.volume = 0.20;
+  obj.autoPlay = false;
+  obj.preLoad = true;       
+  obj.play();
+};
 
-    $("button").click(function() {
-        obj.play();
-    });
-});
-
+// On click the START button will spin the reels, and a sound will play
+// A setTimeout function will check if there is a winner
 $('button').click(function() {
+  playSounds(reelsTurn);
   spin();
   setTimeout(function() {
     checkWin(checkWinArray);
-  }, 6500)
+  }, 9500)
 });
 
 // A click function that will initiate when the button is pressed.  It initiates the animation
@@ -69,7 +77,7 @@ function addTiles(target, array) {
 
 // This creates an animation effect.  
 function moveTiles(target) {
-  var time = 6500;
+  var time = 9500;
   time += Math.round(Math.random() * 1000);
   target.stop(true, true);
 
@@ -84,18 +92,21 @@ function moveTiles(target) {
 // Check to see if there is a winner
 function checkWin(arr) {
   if (arr[0] === 'Teapot' && arr[1] === 'Tea Strainer' && arr[2] === 'Loose Tea') {
-    strobe(".wrapper")
+    strobe(".wrapper");
     $("#status").html("Congrats! You win some tea!");
+    playSounds(bellChime);
     $('#tea').css("display", "block");
     $("#tea").fadeOut(7000, "swing");
   } else if (arr[0] === 'Coffee Maker' && arr[1] === 'Coffee Filter' && arr[2] === 'Coffee Beans') {
-    strobe(".wrapper")
+    strobe(".wrapper");
     $("#status").html("Congrats!  You win some coffee!");
+    playSounds(bellChime);
     $('#coffee').css("display", "block");
     $("#coffee").fadeOut(7000, "swing");
   } else if (arr[0] === 'Espresso Machine' && arr[1] === 'Espresso Tamper' && arr[2] === 'Ground Espresso Beans') {
-    strobe(".wrapper")
+    strobe(".wrapper");
     $("#status").html("Congrats!! You win some Espresso!!");
+    playSounds(bellChime);
     $('#espresso').css("display", "block");
     $("#espresso").fadeOut(7000, "swing");
   } else {
@@ -105,7 +116,7 @@ function checkWin(arr) {
 
 // Create a strobe effect on the status bar
 function strobe(target) {
-  var time = 7
+  var time = 10
   for(i = 0; i < time; i++) {
     $(target).fadeOut("fast").delay(25).fadeIn("fast");
   }
