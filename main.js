@@ -3,20 +3,37 @@ var machines = ['Coffee Maker', 'Teapot', 'Espresso Machine'];
 var tools = ['Coffee Filter', 'Tea Strainer', 'Espresso Tamper'];
 var organics = ['Coffee Beans', 'Loose Tea', 'Ground Espresso Beans'];
 
+checkWinArray = [];
+
 // When the page loads, this function will create the first set of reels, 
 // setting them up at random order
 $(document).ready(
   function(){
+    strobe("#status");
+    $("#status").text("Press The Start Button To Win!");
     addTiles($("#reel1 .wrapper"), machines);
     addTiles($("#reel2 .wrapper"), tools);
     addTiles($("#reel3 .wrapper"), organics);
   }   
 );
 
+$('button').click(function() {
+  spin();
+  setTimeout(function() {
+    checkWin(checkWinArray);
+  }, 6500)
+});
+
 // A click function that will initiate when the button is pressed.  It initiates the animation
 // which is really just adding to the margin-top of the list of divs.  It also adds more tiles
 // to the reel so that if you need to press the button again, there are already new tiles available
 function spin() {
+  strobe("#status");
+  $("#status").html("Spinning...");
+  $("#coffee").css("display", "none");
+  $("#tea").css("display", "none");
+  $("#espresso").css("display", "none");
+  checkWinArray = [];
   addTiles($("#reel1 .wrapper"), machines);
   moveTiles($("#reel1 .wrapper"));
   addTiles($("#reel2 .wrapper"), tools);
@@ -30,28 +47,54 @@ function spin() {
 // number to use since it will provide enough of a random list to keep the game interesting.  Taco is 
 // referring to the HTML element that will have the tiles appended to it, Array is referring to the 
 // particular array that you are passing in given that there are three unique reels
-function addTiles(taco, array) {
+function addTiles(target, array) {
   var newArray = [];
   for(var i = 0; i < 15; i++){
     var ctr = Math.floor(Math.random() * array.length);
-    taco.append("<div class='reel-tile'><p class='reel-title'>" + array[ctr] + "</p></div>");
+    target.append("<div class='reel-tile'><p class='reel-title'>" + array[ctr] + "</p></div>");
     newArray.push(array[ctr]);
   }
-  console.log(newArray);
+  checkWinArray.push(newArray[0]);
+  console.log(checkWinArray);
 }; 
 
 // This creates an animation effect.  
-function moveTiles(taco) {
+function moveTiles(target, fun) {
   var time = 6500;
   time += Math.round(Math.random() * 1000);
-  taco.stop(true,true);
+  target.stop(true, true);
 
-  var marginTop = parseInt(taco.css("margin-top"), 10);
+  var marginTop = parseInt(target.css("margin-top"), 10);
     
   marginTop -= (15 * 200);
     
-  taco.animate(
-    {"margin-top": marginTop + "px"},
-    {'duration' : time, 'easing' : "easeOutElastic"}
-  );
+  target.animate({"margin-top": marginTop + "px"},
+    {'duration' : time, 'easing' : "easeOutElastic"})
 };
+
+// Check to see if there is a winner
+function checkWin(arr) {
+  if (arr[0] === 'Teapot' && arr[1] === 'Tea Strainer' && arr[2] === 'Loose Tea') {
+    strobe(".wrapper")
+    $("#status").html("Congrats! You win some tea!");
+    $('#tea').css("display", "block");
+  } else if (arr[0] === 'Coffee Maker' && arr[1] === 'Coffee Filter' && arr[2] === 'Coffee Beans') {
+    strobe(".wrapper")
+    $("#status").html("Congrats!  You win some coffee!");
+    $('#coffee').css("display", "block");
+  } else if (arr[0] === 'Espresso Machine' && arr[1] === 'Espresso Tamper' && arr[2] === 'Ground Espresso Beans') {
+    strobe(".wrapper")
+    $("#status").html("Congrats!! You win some Espresso!!");
+    $('#espresso').css("display", "block");
+  } else {
+    $("#status").html("Oops! Not a winner this time!  Try Again");
+  }
+}
+
+// Create a strobe effect on the status bar
+function strobe(target) {
+  var time = 7
+  for(i = 0; i < time; i++) {
+    $(target).fadeOut("fast").delay(25).fadeIn("fast");
+  }
+}

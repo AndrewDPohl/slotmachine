@@ -7,6 +7,32 @@ body {
   background-color: #849483;
 }
 
+.prize {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  z-index: 15;
+  top: 7%;
+  left: 50%;
+  background-size: 400px 400px;
+  margin: 0 0 0 -200px;
+}
+
+#coffee {
+  display: none;
+  background-image: url('http://res.freestockphotos.biz/pictures/16/16178-illustration-of-a-cup-of-coffee-pv.png');
+}
+
+#tea {
+  display: none;
+  background-image: url('http://pngimg.com/upload/cup_PNG1961.png');
+}
+
+#espresso {
+  display: none;
+  background-image: url('https://www.nespresso.com/ecom/medias/sys_master/public/9501752754206/A-0070-glassEspresso-mediaMain.png');
+}
+
 .title {
   background-color: black;
   height: 50px;
@@ -34,6 +60,7 @@ body {
   width: 1000px;
   background-color: black;
   margin: 0 auto;
+  z-index: 10;
 }
 
 .reel-container {
@@ -69,6 +96,13 @@ body {
 .reel .wrapper{
   margin-top: -6px;
   width: 100px;
+}
+
+#status {
+  background-color: #948392;
+  text-align: center;
+  margin: 20px auto;
+  width: 600px;
 }
 
 .button-container {
