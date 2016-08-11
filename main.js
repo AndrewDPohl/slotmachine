@@ -4,11 +4,11 @@ var tools = ['Coffee Filter', 'Tea Strainer', 'Espresso Tamper'];
 var organics = ['Coffee Beans', 'Loose Tea', 'Ground Espresso Beans'];
 
 // Various sounds to be played during the game
-var reelsTurn = "./audio/slotMachineSound.mp3";
+var beepBoop = "./audio/beepBoopBop.mp3";
 var bellChime = "./audio/bellChime.mp3";
 var gameStart = "./audio/gameStart.ogg";
-
-var reelWidth = $(window).width();
+var loser = "./audio/loser.mp3";
+var winner = "./audio/winner.mp3";
 
 // Array that is used to check if a winner
 checkWinArray = [];
@@ -18,7 +18,7 @@ checkWinArray = [];
 $(document).ready(
   function(){
     strobe("#status");
-    $("#status").text("Press The Start Button To Win!");
+    $("#status").text("Press The Start Button To Play!");
     playSounds(gameStart);
     addTiles($("#reel1 .wrapper"), machines);
     addTiles($("#reel2 .wrapper"), tools);
@@ -39,11 +39,11 @@ function playSounds(sound) {
 // On click the START button will spin the reels, and a sound will play
 // A setTimeout function will check if there is a winner
 $('button').click(function() {
-  playSounds(reelsTurn);
+  playSounds(beepBoop);
   spin();
   setTimeout(function() {
     checkWin(checkWinArray);
-  }, 9500)
+  }, 9000)
 });
 
 // A click function that will initiate when the button is pressed.  It initiates the animation
@@ -54,11 +54,11 @@ function spin() {
   strobe("#status");
   $("#status").html("Spinning...");
   addTiles($("#reel1 .wrapper"), machines);
-  moveTiles($("#reel1 .wrapper"));
+  moveTiles($("#reel1 .wrapper"), 8250);
   addTiles($("#reel2 .wrapper"), tools);
-  moveTiles($("#reel2 .wrapper"));
+  moveTiles($("#reel2 .wrapper"), 7000);
   addTiles($("#reel3 .wrapper"), organics);
-  moveTiles($("#reel3 .wrapper"));
+  moveTiles($("#reel3 .wrapper"), 9500);
 };
 
 // This creates a reel, and adds to it as you progress through the game.  It takes each array and
@@ -78,19 +78,12 @@ function addTiles(target, array) {
 }; 
 
 // This creates an animation effect.  
-function moveTiles(target) {
-  var time = 9500;
+function moveTiles(target, time) {
   time += Math.round(Math.random() * 1000);
   target.stop(true, true);
 
   var marginTop = parseInt(target.css("margin-top"), 10);
-  if (reelWidth <= 414) {
-    marginTop -= (15 * 225);
-  } else if (reelWidth <= 736) {
-    marginTop -= (15 * 150);
-  } else {
-    marginTop -= (15 * 250);
-  }
+  marginTop -= (15 * 200);
     
   target.animate({"margin-top": marginTop + "px"},
     {'duration' : time, 'easing' : "easeOutElastic"})
@@ -101,22 +94,23 @@ function checkWin(arr) {
   if (arr[0] === 'Teapot' && arr[1] === 'Tea Strainer' && arr[2] === 'Loose Tea') {
     strobe(".wrapper");
     $("#status").html("Congrats! You win some tea!");
-    playSounds(bellChime);
+    playSounds(winner);
     $('#tea').css("display", "block");
     $("#tea").fadeOut(7000, "swing");
   } else if (arr[0] === 'Coffee Maker' && arr[1] === 'Coffee Filter' && arr[2] === 'Coffee Beans') {
     strobe(".wrapper");
     $("#status").html("Congrats!  You win some coffee!");
-    playSounds(bellChime);
+    playSounds(winner);
     $('#coffee').css("display", "block");
     $("#coffee").fadeOut(7000, "swing");
   } else if (arr[0] === 'Espresso Machine' && arr[1] === 'Espresso Tamper' && arr[2] === 'Ground Espresso Beans') {
     strobe(".wrapper");
     $("#status").html("Congrats!! You win some Espresso!!");
-    playSounds(bellChime);
+    playSounds(winner);
     $('#espresso').css("display", "block");
     $("#espresso").fadeOut(7000, "swing");
   } else {
+    playSounds(loser);
     $("#status").html("Oops! Not a winner this time!  Try Again");
   }
 }

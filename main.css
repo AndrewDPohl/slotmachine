@@ -18,10 +18,10 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  width: 320px;
-  height: 320px;
+  width: 450px;
+  height: 450px;
   z-index: 15;
-  background-size: 320px 320px;
+  background-size: 450px 450px;
 }
 
 #coffee {
@@ -51,7 +51,7 @@ body {
   margin-top: 15px;
   color: white;
   font-size: 30px;
-  font-family: Helvetica;
+  font-family: 'Electrolize', sans-serif;
   text-align: center;
   line-height: 50px;
 }
@@ -66,21 +66,22 @@ body {
 
 .reel-container {
   display: inline-block;
+  margin-bottom: 20px;
 }
 
 .reel {
   display: inline-block;
   margin: 40px 15px 0 15px;
   font-size: 40px;
-  font-family: arial, helvetica, sans-serif;
+  font-family: 'Electrolize', sans-serif;
   overflow: hidden;
   width: 200px;
-  height: 250px;
-  border: 2px solid white;
+  height: 200px;
+  border: 4px solid white;
 }
 
 .reel-tile {
-  height: 250px;
+  height: 200px;
   width: 200px;
   background-color: #C7F2A7;
   text-align: center;
@@ -99,7 +100,8 @@ body {
 }
 
 #status {
-  background-color: #948392;
+  font-family: 'Electrolize', sans-serif;
+  background-color: #C7F2A7;
   text-align: center;
   margin: 20px auto;
   width: 600px;
@@ -118,14 +120,14 @@ body {
   width: 200px;
   background-color: #B4656F;
   font-size: 25px;
-  font-family: Helvetica;
+  font-family: 'Electrolize', sans-serif;
   cursor: pointer;
 }
 
 @media (max-width: 736px) {
 
   .slot-body {
-    height: 300px;
+    height: 350px;
   }
   
   .main-title {
@@ -143,13 +145,11 @@ body {
 
   .reel {
     margin-top: 10px;
-    height: 150px;
-    width: 150px;
+    width: 148px;
     font-size: 30px;
   }
 
   .reel-tile {
-    height: 150px;
     width: 150px;
   }
 
@@ -169,15 +169,19 @@ body {
 @media (max-width: 414px) {
 
   .main-title {
-    font-size: 15px;
+    font-size: 18px;
   }
+
+  .thumbtack-logo {
+      height: 20px;
+    }
 
   .title {
     margin-bottom: 30px;
   }
 
   .slot-body {
-    height: 600px;
+    height: 375px;
   }
 
   .slot-button {
@@ -193,13 +197,17 @@ body {
 
   .reel {
     margin: 40px 0 0 0;
-    height: 225px;
-    width: 100px;
+    width: 96px;
     font-size: 15px;
   }
 
   .reel-tile {
-    height: 225px;
     width: 100px;
+  }
+}
+
+@media (max-height: 320px) {
+  .title {
+    margin-bottom: 0;
   }
 }
