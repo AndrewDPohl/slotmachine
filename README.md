@@ -1,4 +1,4 @@
-# slotmachine
+# Caffeine Slot Machine
 
 ## Slot Machine using Javascript, Jquery, HTML and CSS
 
