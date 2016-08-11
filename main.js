@@ -8,6 +8,8 @@ var reelsTurn = "./audio/slotMachineSound.mp3";
 var bellChime = "./audio/bellChime.mp3";
 var gameStart = "./audio/gameStart.ogg";
 
+var reelWidth = $(window).width();
+
 // Array that is used to check if a winner
 checkWinArray = [];
 
@@ -82,8 +84,13 @@ function moveTiles(target) {
   target.stop(true, true);
 
   var marginTop = parseInt(target.css("margin-top"), 10);
-    
-  marginTop -= (15 * 200);
+  if (reelWidth <= 414) {
+    marginTop -= (15 * 225);
+  } else if (reelWidth <= 736) {
+    marginTop -= (15 * 150);
+  } else {
+    marginTop -= (15 * 250);
+  }
     
   target.animate({"margin-top": marginTop + "px"},
     {'duration' : time, 'easing' : "easeOutElastic"})

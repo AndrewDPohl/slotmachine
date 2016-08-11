@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Thumbtack Slot Machine</title>
   <link rel="stylesheet" href="./main.css">
@@ -11,17 +12,15 @@
 <body>
   <div class="title">
     <h1 class="main-title">Thumbtack Caffeine Slot Machine</h1>
-    <p class="sub-title">Push The Start Button And Win A Buzzy Prize</p>
   </div>
 
-  <div class="prize" id="coffee"></div>
-  <div class="prize" id="tea"></div>
-  <div class="prize" id="espresso"></div>
+  <div class="prize-container">
+    <div class="prize" id="coffee"></div>
+    <div class="prize" id="tea"></div>
+    <div class="prize" id="espresso"></div>
+  </div>
 
   <div class="slot-body">
-    <div class="button-container">
-      <button class="slot-button" style="margin-top:4px;">START</button>
-    </div>
     <div class="reel-container">
       <div class="reel" id="reel1">
         <div class="wrapper"></div>
@@ -32,6 +31,9 @@
       <div class="reel" id="reel3">
         <div class="wrapper"></div>
       </div>
+    </div>
+    <div class="button-container">
+      <button class="slot-button" style="margin-top:4px;">START</button>
     </div>
     <h1 id="status"></h1>
   </div>

@@ -7,15 +7,21 @@ body {
   background-color: #849483;
 }
 
+.prize-container {
+  width: 100%;
+}
+
 .prize {
   position: absolute;
-  width: 400px;
-  height: 400px;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 320px;
+  height: 320px;
   z-index: 15;
-  top: 7%;
-  left: 50%;
-  background-size: 400px 400px;
-  margin: 0 0 0 -200px;
+  background-size: 320px 320px;
 }
 
 #coffee {
@@ -44,43 +50,37 @@ body {
 .main-title {
   margin-top: 15px;
   color: white;
-  font-size: 20px;
+  font-size: 30px;
   font-family: Helvetica;
   text-align: center;
-}
-
-.sub-title {
-  text-align: center;
-  color: white;
-  margin-top: -10px;
+  line-height: 50px;
 }
 
 .slot-body {
   height: 500px;
-  width: 1000px;
+  width: 100%;
   background-color: black;
   margin: 0 auto;
-  z-index: 10;
+  text-align: center;
 }
 
 .reel-container {
-  margin-left: 250px;
   display: inline-block;
 }
 
 .reel {
   display: inline-block;
-  margin: 140px 15px 0 15px;
+  margin: 40px 15px 0 15px;
   font-size: 40px;
   font-family: arial, helvetica, sans-serif;
   overflow: hidden;
   width: 200px;
-  height: 200px;
+  height: 250px;
   border: 2px solid white;
 }
 
 .reel-tile {
-  height: 200px;
+  height: 250px;
   width: 200px;
   background-color: #C7F2A7;
   text-align: center;
@@ -106,21 +106,100 @@ body {
 }
 
 .button-container {
-  float: left;
-  height: 500px;
-  position: absolute;
-  width: 300px;
+  height: 100px;
+  width: 100%;
+  text-align: center;
 }
 
 .slot-button {
+  margin: 0 auto;
   display: block;
-  position: absolute;
-  top: 33%;
-  left: 11%;
-  height: 150px;
+  height: 100px;
   width: 200px;
   background-color: #B4656F;
   font-size: 25px;
   font-family: Helvetica;
   cursor: pointer;
+}
+
+@media (max-width: 736px) {
+
+  .slot-body {
+    height: 300px;
+  }
+  
+  .main-title {
+    font-size: 20px;
+  }
+
+  .title {
+    margin-bottom: 10px;
+  }
+
+  .slot-button {
+    height: 50px;
+    width: 100px;
+  }
+
+  .reel {
+    margin-top: 10px;
+    height: 150px;
+    width: 150px;
+    font-size: 30px;
+  }
+
+  .reel-tile {
+    height: 150px;
+    width: 150px;
+  }
+
+  #status {
+    margin: -40px 0 0 0;
+    width: 100%;
+    font-size: 20px;
+  }
+
+  .prize {
+    height: 250px;
+    width: 250px;
+    background-size: 250px 250px;
+  }
+}
+
+@media (max-width: 414px) {
+
+  .main-title {
+    font-size: 15px;
+  }
+
+  .title {
+    margin-bottom: 30px;
+  }
+
+  .slot-body {
+    height: 600px;
+  }
+
+  .slot-button {
+    height: 100px;
+    width: 150px;
+  }
+
+  #status {
+    margin: 40px 0 0 0;
+    width: 100%;
+    font-size: 20px;
+  }
+
+  .reel {
+    margin: 40px 0 0 0;
+    height: 225px;
+    width: 100px;
+    font-size: 15px;
+  }
+
+  .reel-tile {
+    height: 225px;
+    width: 100px;
+  }
 }
