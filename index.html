@@ -2,22 +2,26 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Thumbtack Slot Machine</title>
+  <link href='https://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="./main.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 </head>
 <body>
   <div class="title">
-    <h1 class="main-title">Thumbtack Caffeine Slot Machine</h1>
-    <p class="sub-title">Push The Start Button And Win A Buzzy Prize</p>
+    <h1 class="main-title"><img class="thumbtack-logo" src="https://static1.thumbtackstatic.com/media/logos/thumbtack_brand_152x24.svg"> Caffeine Slot Machine</h1>
+  </div>
+
+  <div class="prize-container">
+    <div class="prize" id="coffee"></div>
+    <div class="prize" id="tea"></div>
+    <div class="prize" id="espresso"></div>
   </div>
 
   <div class="slot-body">
-    <div class="button-container">
-      <button class="slot-button" onClick="spin();" style="margin-top:4px;">START</button>
-    </div>
     <div class="reel-container">
       <div class="reel" id="reel1">
         <div class="wrapper"></div>
@@ -29,6 +33,10 @@
         <div class="wrapper"></div>
       </div>
     </div>
+    <div class="button-container">
+      <button class="slot-button">START</button>
+    </div>
+    <h1 id="status"></h1>
   </div>
 
   <script src="./main.js"></script>
