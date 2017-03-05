@@ -31,7 +31,8 @@ body {
 
 #tea {
   display: none;
-  background-image: url('http://pngimg.com/upload/cup_PNG1961.png');
+  //background-image: url('http://pngimg.com/upload/cup_PNG1961.png');
+    background-image: url('https://img.clipartfox.com/3b223e27b13935f50b693612a1182136_cup-of-tea-png-clipart-cup-of-tea-clipart_4000-2708.png');
 }
 
 #espresso {
